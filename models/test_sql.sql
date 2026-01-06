@@ -1,0 +1,1 @@
+select * from RAW_DB.airline_flights
