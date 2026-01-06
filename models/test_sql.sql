@@ -1,1 +1,1 @@
-select * from RAW_DB.airline_flights
+select * from {{source("flight_raw",'airline_flights')}} limit 10

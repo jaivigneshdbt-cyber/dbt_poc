@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  - name: raw
+  - name: flight_raw
     database: FLIGHT
     schema: raw_db
     tables:
-      - name: AIRLINE_FLIGHTS
+      - name: airline_flights
