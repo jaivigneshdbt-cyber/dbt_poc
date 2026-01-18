@@ -54,3 +54,8 @@ sources:
           - name: order_date
             tests:
               - not_null
+      
+      - name: events
+      - name: order_items
+      - name: reviews
+      - name: users
