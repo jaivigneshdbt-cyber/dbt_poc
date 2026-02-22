@@ -4,12 +4,7 @@
     config(
         materialized='incremental',
         unique_key='review_id',
-        incremental_strategy='merge',
-        partition_by={
-            "field": "review_date",
-            "data_type": "date",
-            "granularity": "day"
-        }
+        incremental_strategy='merge'
     )
 }}
 
@@ -20,7 +15,8 @@ SELECT
     user_id,
     rating,
     review_text,
-    review_date
+    review_date,
+    CURRENT_TIMESTAMP() as dbt_updated_at
 FROM
     {{ source('ecommerce', 'reviews') }}
 

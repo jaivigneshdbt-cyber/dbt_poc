@@ -14,10 +14,11 @@ SELECT
     user_id,
     rating,
     review_text,
-    review_date
+    review_date,
+    CURRENT_TIMESTAMP() as dbt_updated_at
 FROM {{ source('ecommerce', 'reviews') }}
 
 {% if is_incremental() %}
   -- Snowflake specific syntax: DATEADD(unit, measure, date)
-  WHERE review_date >= DATEADD(day, -3, CURRENT_DATE())
+  WHERE review_date >= DATEADD(day, -366, CURRENT_DATE())
 {% endif %}
