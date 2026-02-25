@@ -5,10 +5,10 @@
     partition_by={
       "field": "order_date",
       "data_type": "timestamp",
-      "granularity": "hour"
+      "granularity": "month"
     },
     event_time='order_date',
-    batch_size='hour',
+    batch_size='month',
     lookback=3,
     begin='2025-01-01',
     tags=['real-time', 'kafka_ingest']
