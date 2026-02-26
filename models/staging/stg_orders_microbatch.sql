@@ -1,6 +1,7 @@
 {{ config(
     materialized='incremental',
     incremental_strategy='microbatch',
+    concurrent_batches=true,
     unique_key='order_id',
     partition_by={
       "field": "order_date",
