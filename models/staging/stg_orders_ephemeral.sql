@@ -10,17 +10,17 @@ SELECT
     -- Foreign Key
     user_id,
     
-    -- Timestamps (using our macro)
+    -- Timestamps
     {{ to_timestamp('order_date') }} as order_at,
     {{ to_timestamp('CURRENT_TIMESTAMP()') }} as loaded_at,
     
-    -- Categorical Data (using our cleaning macro)
+    -- Categorical Data
     {{ standardize_case('order_status', case_type='lower') }} as status,
     
-    -- Metrics (using our null-handling macro)
+    -- Metrics
     {{ coalesce_nulls('total_amount') }} as total_amount,
 
-    -- Transformation: Flagging high-value orders (Example of business logic)
+    -- Transformation: Flagging high-value orders
     CASE 
         WHEN total_amount > 500 THEN TRUE 
         ELSE FALSE 
